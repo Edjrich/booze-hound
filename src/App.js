@@ -1,6 +1,6 @@
 import './App.css';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 
 
@@ -38,9 +38,13 @@ import { useEffect, useState } from 'react';
 function App() {
 
   const [drink, setDrink] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+  // const [isLoading, setIsLoading] = useState(true)
+  const [firstChoice, setFirstChoice] = useState('lemonade');
+  const [cocktailDetails, setCocktailDetails] = useState([]);
+  // set default
 
-  useEffect(() => {
+  const getData = ((event) => {
+    event.preventDefault();
 
     console.log(`my app has mounted`)
     
@@ -58,46 +62,128 @@ function App() {
         // key: `523532`,
         //  key: `1`,
         format: 'json',
-        i: 'gin',
+        i: firstChoice
         // i: `11007`
 
         // i allows to search by ingredient if filter is already applied
         
       }
     }).then( (results) =>{
-      // console.log(results);
+      console.log(results);
       console.log(results.data.drinks)
       // console.log(results.data.drinks[0].idDrink)
       setDrink(results.data.drinks)
-      setIsLoading(false);
+      // setIsLoading(false);
 
     })
-  }, [])
+  })
 
+  const userChoice = (event) => {
+    setFirstChoice(event.target.value)
+    console.log(event.target.value)
+  }
+
+  console.log(userChoice);
+  console.log(firstChoice);
+
+
+
+
+
+  const moreInfo = (event) => {
+    event.preventDefault();
+      
+    axios({
+      url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php',
+      method: 'GET',
+      // dataResponse: 'json',
+      // above may not be required. check later
+      params: {
+        // key: `523532`,
+        format: 'json',
+        i: `11007`
+    // ID ABOVE IS IS SPECIFIC TO A DRINK ()
+
+        // i allows to search by ingredient if filter is already applied
+
+      }
+    }).then((results) => {
+      console.log(results);
+    console.log(results.data.drinks)
+    setCocktailDetails(results.data.drinks)
+      // setDrink(results)
+      // setIsLoading(false);
+
+    })
+  }
+
+  // const dataOnClick = () => {
+  //   console.log()
+  //   setCocktailDetails()
+  // }
+
+  //  const userChoice = (event) => {
+  //   setFirstChoice(event.target.value)
+  //   console.log(event.target.value)
+  // }
 
 
   return (
     <div className="App">
      <h1>Hello world. Can I buy you a drink?</h1>
+     <form onSubmit={getData}>
+        {/* create function and add onSubmit={newFunciton} to form */}
+      {/* <select name="firstIngredient" id="firstIngredient"> */}
+      <select onChange={userChoice}>
+        <option value='gin'>Gin</option>
+        <option value='scotch'>Scotch</option>
+        <option value='amaretto'>Amaretto</option>
+        <option value='tequila'>Tequila</option>
+        <option value='vodka'>Vodka</option>
+       </select>
+       <button type="submit">The cause and solution, to all of life's problems</button>
+     </form>
     <ul>
       {
-        drink.map((cocktail) => {
+        drink.map( (drinkInfo) => {
           return (
-            <li key={cocktail.idDrink}>
-              <h2>{cocktail.strDrink}</h2>
-              <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink}></img>
+            <li onClick={moreInfo} key={drinkInfo.idDrink}>
+              <h2>{drinkInfo.strDrink}</h2>
+              <img key={drinkInfo.idDrink} src={drinkInfo.strDrinkThumb} alt={drinkInfo.strDrink}></img>
               {/* will have to review alt tag and accessibility standards  */}
             </li>
           )
         })
       }
     </ul>
-
-
-
-    {/* {
-        isLoading ? <p>Just waiting</p> : <button onClick={console.log('QWHY')}>Does it say anything?</button>
-    } */}
+    <ul>
+      {
+        cocktailDetails.map( (cocktailInfo) => {
+          return (
+            <li>
+              <h3>{cocktailInfo.strDrink}</h3>
+              <p>{cocktailInfo.strInstructions}</p>
+              <p>{cocktailInfo.strIngredient1}</p>
+              <p>{cocktailInfo.strIngredient2}</p>
+              <p>{cocktailInfo.strIngredient3}</p>
+              <p>{cocktailInfo.strIngredient4}</p>
+              <p>{cocktailInfo.strIngredient5}</p>
+              <p>{cocktailInfo.strIngredient6}</p>
+              <p>{cocktailInfo.strIngredient7}</p>
+              <p>{cocktailInfo.strIngredient8}</p>
+              <p>{cocktailInfo.strIngredient9}</p>
+              <p>{cocktailInfo.strIngredient10}</p>
+              <p>{cocktailInfo.strIngredient11}</p>
+              <p>{cocktailInfo.strIngredient12}</p>
+              <p>{cocktailInfo.strIngredient13}</p>
+              <p>{cocktailInfo.strIngredient14}</p>
+              <p>{cocktailInfo.strIngredient15}</p>
+              <img src={cocktailInfo.strDrinkThumb}></img>
+          </li>
+          )
+        })
+      }
+    </ul>
     </div>
   );
 }
@@ -168,3 +254,55 @@ export default App;
 
 // })
 
+// FULL LIST OF INGREDIENTS 
+// {
+
+// "drinks": [
+//   {
+//     "strIngredient1": "Light rum"
+//   },
+//   {
+//     "strIngredient1": "Gin"
+//   },
+//   {
+//     "strIngredient1": "Dark rum"
+//   },
+//   {
+//     "strIngredient1": "Sweet Vermouth"
+//   },
+//   {
+//     "strIngredient1": "Scotch"
+//   },
+//   {
+//     "strIngredient1": "Triple sec"
+//   },
+//   {
+//     "strIngredient1": "Southern Comfort"
+//   },
+//   {
+//     "strIngredient1": "Brandy"
+//   },
+//   {
+//     "strIngredient1": "Blended whiskey"
+//   },
+//   {
+//     "strIngredient1": "Dry Vermouth"
+//   },
+//   {
+//     "strIngredient1": "Amaretto"
+//   },
+//   {
+//     "strIngredient1": "Bourbon"
+//   },
+//   {
+//     "strIngredient1": "Tequila"
+//   },
+//   {
+//     "strIngredient1": "Vodka"
+//   },
+//   {
+//     "strIngredient1": "Añejo rum"
+//   },
+//   {
+//     "strIngredient1": "Whiskey"
+//   },
