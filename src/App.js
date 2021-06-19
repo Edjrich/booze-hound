@@ -48,7 +48,7 @@ function App() {
 
     console.log(`my app has mounted`)
     
-    axios({
+     axios({
       // url: 'http://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita',
       url: 'http://www.thecocktaildb.com/api/json/v1/1/filter.php',
       // url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php',
@@ -92,6 +92,8 @@ function App() {
 
   const moreInfo = (event) => {
     event.preventDefault();
+    console.log(event.target.id)
+    const imgId = event.target.id
       
     axios({
       url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php',
@@ -101,7 +103,7 @@ function App() {
       params: {
         // key: `523532`,
         format: 'json',
-        i: `11007`
+        i: imgId
     // ID ABOVE IS IS SPECIFIC TO A DRINK ()
 
         // i allows to search by ingredient if filter is already applied
@@ -149,7 +151,7 @@ function App() {
           return (
             <li onClick={moreInfo} key={drinkInfo.idDrink}>
               <h2>{drinkInfo.strDrink}</h2>
-              <img key={drinkInfo.idDrink} src={drinkInfo.strDrinkThumb} alt={drinkInfo.strDrink}></img>
+              <img id={drinkInfo.idDrink} src={drinkInfo.strDrinkThumb} alt={drinkInfo.strDrink}></img>
               {/* will have to review alt tag and accessibility standards  */}
             </li>
           )
