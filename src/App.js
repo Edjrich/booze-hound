@@ -162,10 +162,15 @@ function App() {
           {/* <select name="firstIngredient" id="firstIngredient"> */}
           <select onChange={userChoice}>
             <option value='gin'>Gin</option>
-            <option value='scotch'>Scotch</option>
-            <option value='amaretto'>Amaretto</option>
             <option value='tequila'>Tequila</option>
             <option value='vodka'>Vodka</option>
+            <option value='scotch'>Scotch</option>
+            <option value='bourbon'>Bourbon</option>
+            <option value='blended_whiskey'>Blended Whiskey</option>
+            <option value='rum'>Rum</option>
+            <option value='amaretto'>Amaretto</option>
+            <option value='sweet_vermouth'>Sweet Vermouth</option>
+            <option value='dry_vermouth'>Dry Vermouth</option>
           </select>
           <button type="submit">The cause and solution, to all of life's problems</button>
         </form>
@@ -298,21 +303,6 @@ export default App;
 
 // "drinks": [
 //   {
-//     "strIngredient1": "Light rum"
-//   },
-//   {
-//     "strIngredient1": "Gin"
-//   },
-//   {
-//     "strIngredient1": "Dark rum"
-//   },
-//   {
-//     "strIngredient1": "Sweet Vermouth"
-//   },
-//   {
-//     "strIngredient1": "Scotch"
-//   },
-//   {
 //     "strIngredient1": "Triple sec"
 //   },
 //   {
@@ -323,21 +313,6 @@ export default App;
 //   },
 //   {
 //     "strIngredient1": "Blended whiskey"
-//   },
-//   {
-//     "strIngredient1": "Dry Vermouth"
-//   },
-//   {
-//     "strIngredient1": "Amaretto"
-//   },
-//   {
-//     "strIngredient1": "Bourbon"
-//   },
-//   {
-//     "strIngredient1": "Tequila"
-//   },
-//   {
-//     "strIngredient1": "Vodka"
 //   },
 //   {
 //     "strIngredient1": "Añejo rum"
