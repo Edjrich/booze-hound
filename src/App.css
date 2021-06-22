@@ -25,12 +25,14 @@ h3 {
 
 /* NOT SO GENERAL STYLING  */
 
+/* everything in JSX needs better class names */
+
 .App {
   text-align: center;
 }
 
 html {
-  background-color: papayawhip;
+  background-color: #cc5500;
 }
 
 img {
@@ -41,6 +43,9 @@ img {
 
 .App h2 {
   text-transform: uppercase;
+  align-self: center;
+  margin-bottom: .2em;
+  margin-top: .7em;
 }
 
 ul {
@@ -55,12 +60,49 @@ ul {
 
 li {
   list-style-type: none;
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: .5em;
+}
+
+.overlay {
+  background-color: green;
+  border: 1px blue solid;
+  /* position: absolute;
+  top: auto; */
 }
 
 
-@media (min-width: 600px) {
-  ul {
+
+/* MEDIA QUERIES  */
+
+
+@media (min-width: 550px) {
+  .drink-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin: 1em;
+    gap: 1em;
+  }
+}
+
+@media (min-width: 800px) {
+  .drink-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1000px) {
+  .drink-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .drink-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }

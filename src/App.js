@@ -171,19 +171,21 @@ function App() {
         </form>
       </header>
 
-    <ul className="wrapper">
-      {
-        drink.map( (drinkInfo) => {
-          return (
-            <li onClick={moreInfo} key={drinkInfo.idDrink}>
-              <h2>{drinkInfo.strDrink}</h2>
-              <img id={drinkInfo.idDrink} src={drinkInfo.strDrinkThumb} alt="{drinkInfo.strDrink}"></img>
-              {/* will have to review alt tag and accessibility standards  */}
-            </li>
-          )
-        })
-      }
-    </ul>
+    <section className="wrapper">
+      <ul className="drink-list">
+        {
+          drink.map( (drinkInfo) => {
+            return (
+              <li onClick={moreInfo} key={drinkInfo.idDrink}>
+                <h2>{drinkInfo.strDrink}</h2>
+                <img id={drinkInfo.idDrink} src={drinkInfo.strDrinkThumb} alt="{drinkInfo.strDrink}"></img>
+                {/* will have to review alt tag and accessibility standards  */}
+              </li>
+            )
+          })
+        }
+      </ul>
+    </section>
     <ul>
       {
         cocktailDetails.map( (cocktailInfo) => {
@@ -193,26 +195,29 @@ function App() {
             // need error handling for strIngredients
             // if strIngredients = null, don't display?
             // how does that work????
-            <li>
-              <h3>{cocktailInfo.strDrink}</h3>
-              <p>{cocktailInfo.strInstructions}</p>
-              <p>{cocktailInfo.strIngredient1}</p>
-              <p>{cocktailInfo.strIngredient2}</p>
-              <p>{cocktailInfo.strIngredient3}</p>
-              <p>{cocktailInfo.strIngredient4}</p>
-              <p>{cocktailInfo.strIngredient5}</p>
-              <p>{cocktailInfo.strIngredient6}</p>
-              <p>{cocktailInfo.strIngredient7}</p>
-              <p>{cocktailInfo.strIngredient8}</p>
-              <p>{cocktailInfo.strIngredient9}</p>
-              <p>{cocktailInfo.strIngredient10}</p>
-              <p>{cocktailInfo.strIngredient11}</p>
-              <p>{cocktailInfo.strIngredient12}</p>
-              <p>{cocktailInfo.strIngredient13}</p>
-              <p>{cocktailInfo.strIngredient14}</p>
-              <p>{cocktailInfo.strIngredient15}</p>
-              <img src={cocktailInfo.strDrinkThumb} alt="change this later"></img>
-          </li>
+            <div className="wrapper overlay">
+              <li>
+                <h3>{cocktailInfo.strDrink}</h3>
+                <p>{cocktailInfo.strInstructions}</p>
+                <p>{cocktailInfo.strMeasure1} {cocktailInfo.strIngredient1}</p>
+                <p>{cocktailInfo.strMeasure2} {cocktailInfo.strIngredient2}</p>
+                <p>{cocktailInfo.strMeasure3} {cocktailInfo.strIngredient3}</p>
+                <p>{cocktailInfo.strMeasure4} {cocktailInfo.strIngredient4}</p>
+                <p>{cocktailInfo.strMeasure5} {cocktailInfo.strIngredient5}</p>
+                <p>{cocktailInfo.strMeasure6} {cocktailInfo.strIngredient6}</p>
+                <p>{cocktailInfo.strMeasure7} {cocktailInfo.strIngredient7}</p>
+                <p>{cocktailInfo.strMeasure8} {cocktailInfo.strIngredient8}</p>
+                <p>{cocktailInfo.strMeasure9} {cocktailInfo.strIngredient9}</p>
+                <p>{cocktailInfo.strMeasure10} {cocktailInfo.strIngredient10}</p>
+                <p>{cocktailInfo.strMeasure11} {cocktailInfo.strIngredient11}</p>
+                <p>{cocktailInfo.strMeasure12} {cocktailInfo.strIngredient12}</p>
+                <p>{cocktailInfo.strMeasure13} {cocktailInfo.strIngredient13}</p>
+                <p>{cocktailInfo.strMeasure14} {cocktailInfo.strIngredient14}</p>
+                <p>{cocktailInfo.strMeasure15} {cocktailInfo.strIngredient15}</p>
+                <p>Serve in: {cocktailInfo.strGlass}</p>
+                <img src={cocktailInfo.strDrinkThumb} alt="change this later"></img>
+              </li>
+            </div>
           )
         })
       }
