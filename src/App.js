@@ -1,6 +1,26 @@
 import './App.css';
 import axios from 'axios';
 import { useState } from 'react';
+import Footer from './Footer';
+// import CocktailResults from './CocktailResults';
+
+// PSEUDO JUNE 21
+// make some components 
+// start basic styling
+// create a pull request
+
+// first make component for cocktailResults
+
+
+
+
+// add new info from second api info to new state
+// create new comp
+// that comp will be fed info from state
+// (still running api call in App.JS)
+// on click get api data (conditional statement if state has x show y)
+// show item with z index and position fixed
+// on click, close 'pop up'
 
 
 
@@ -31,7 +51,10 @@ import { useState } from 'react';
 
 
 // create form to accept user input from drop down menu with ingredients
-// change what is in axios with regular function, and pass in variable colleted from form
+// change what is in axios with regular function, and pass in variable colleted from form.
+
+
+// try 2nd api call in cocktailComp if time permits! 
 
 
 
@@ -132,60 +155,74 @@ function App() {
 
   return (
     <div className="App">
-     <h1>Hello world. Can I buy you a drink?</h1>
-     <form onSubmit={getData}>
-        {/* create function and add onSubmit={newFunciton} to form */}
-      {/* <select name="firstIngredient" id="firstIngredient"> */}
-      <select onChange={userChoice}>
-        <option value='gin'>Gin</option>
-        <option value='scotch'>Scotch</option>
-        <option value='amaretto'>Amaretto</option>
-        <option value='tequila'>Tequila</option>
-        <option value='vodka'>Vodka</option>
-       </select>
-       <button type="submit">The cause and solution, to all of life's problems</button>
-     </form>
-    <ul>
-      {
-        drink.map( (drinkInfo) => {
-          return (
-            <li onClick={moreInfo} key={drinkInfo.idDrink}>
-              <h2>{drinkInfo.strDrink}</h2>
-              <img id={drinkInfo.idDrink} src={drinkInfo.strDrinkThumb} alt={drinkInfo.strDrink}></img>
-              {/* will have to review alt tag and accessibility standards  */}
-            </li>
-          )
-        })
-      }
-    </ul>
+      <header className="wrapper">
+        <h1>Hello world. Can I buy you a drink?</h1>
+        <form onSubmit={getData}>
+            {/* create function and add onSubmit={newFunciton} to form */}
+          {/* <select name="firstIngredient" id="firstIngredient"> */}
+          <select onChange={userChoice}>
+            <option value='gin'>Gin</option>
+            <option value='scotch'>Scotch</option>
+            <option value='amaretto'>Amaretto</option>
+            <option value='tequila'>Tequila</option>
+            <option value='vodka'>Vodka</option>
+          </select>
+          <button type="submit">The cause and solution, to all of life's problems</button>
+        </form>
+      </header>
+
+    <section className="wrapper">
+      <ul className="drink-list">
+        {
+          drink.map( (drinkInfo) => {
+            return (
+              <li onClick={moreInfo} key={drinkInfo.idDrink}>
+                <h2>{drinkInfo.strDrink}</h2>
+                <img id={drinkInfo.idDrink} src={drinkInfo.strDrinkThumb} alt="{drinkInfo.strDrink}"></img>
+                {/* will have to review alt tag and accessibility standards  */}
+              </li>
+            )
+          })
+        }
+      </ul>
+    </section>
     <ul>
       {
         cocktailDetails.map( (cocktailInfo) => {
+          // not an array! try a for in loop! maybe? idk
           return (
-            <li>
-              <h3>{cocktailInfo.strDrink}</h3>
-              <p>{cocktailInfo.strInstructions}</p>
-              <p>{cocktailInfo.strIngredient1}</p>
-              <p>{cocktailInfo.strIngredient2}</p>
-              <p>{cocktailInfo.strIngredient3}</p>
-              <p>{cocktailInfo.strIngredient4}</p>
-              <p>{cocktailInfo.strIngredient5}</p>
-              <p>{cocktailInfo.strIngredient6}</p>
-              <p>{cocktailInfo.strIngredient7}</p>
-              <p>{cocktailInfo.strIngredient8}</p>
-              <p>{cocktailInfo.strIngredient9}</p>
-              <p>{cocktailInfo.strIngredient10}</p>
-              <p>{cocktailInfo.strIngredient11}</p>
-              <p>{cocktailInfo.strIngredient12}</p>
-              <p>{cocktailInfo.strIngredient13}</p>
-              <p>{cocktailInfo.strIngredient14}</p>
-              <p>{cocktailInfo.strIngredient15}</p>
-              <img src={cocktailInfo.strDrinkThumb}></img>
-          </li>
+
+            // need error handling for strIngredients
+            // if strIngredients = null, don't display?
+            // how does that work????
+            <div className="wrapper overlay">
+              <li>
+                <h3>{cocktailInfo.strDrink}</h3>
+                <p>{cocktailInfo.strInstructions}</p>
+                <p>{cocktailInfo.strMeasure1} {cocktailInfo.strIngredient1}</p>
+                <p>{cocktailInfo.strMeasure2} {cocktailInfo.strIngredient2}</p>
+                <p>{cocktailInfo.strMeasure3} {cocktailInfo.strIngredient3}</p>
+                <p>{cocktailInfo.strMeasure4} {cocktailInfo.strIngredient4}</p>
+                <p>{cocktailInfo.strMeasure5} {cocktailInfo.strIngredient5}</p>
+                <p>{cocktailInfo.strMeasure6} {cocktailInfo.strIngredient6}</p>
+                <p>{cocktailInfo.strMeasure7} {cocktailInfo.strIngredient7}</p>
+                <p>{cocktailInfo.strMeasure8} {cocktailInfo.strIngredient8}</p>
+                <p>{cocktailInfo.strMeasure9} {cocktailInfo.strIngredient9}</p>
+                <p>{cocktailInfo.strMeasure10} {cocktailInfo.strIngredient10}</p>
+                <p>{cocktailInfo.strMeasure11} {cocktailInfo.strIngredient11}</p>
+                <p>{cocktailInfo.strMeasure12} {cocktailInfo.strIngredient12}</p>
+                <p>{cocktailInfo.strMeasure13} {cocktailInfo.strIngredient13}</p>
+                <p>{cocktailInfo.strMeasure14} {cocktailInfo.strIngredient14}</p>
+                <p>{cocktailInfo.strMeasure15} {cocktailInfo.strIngredient15}</p>
+                <p>Serve in: {cocktailInfo.strGlass}</p>
+                <img src={cocktailInfo.strDrinkThumb} alt="change this later"></img>
+              </li>
+            </div>
           )
         })
       }
     </ul>
+    <Footer />
     </div>
   );
 }
