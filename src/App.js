@@ -86,8 +86,9 @@ function App() {
   return (
     <div className="App">
       <header className="wrapper">
-        <h1>Hello world. Can I buy you a drink?</h1>
-        <form onSubmit={getData}>
+        <h1>Cocktail Curator</h1>
+        <p>Please choose from one of the options below:</p>
+        <form className="form" onSubmit={getData}>
           <select onChange={userChoice}>
             <option value='gin'>Gin</option>
             <option value='tequila'>Tequila</option>
@@ -151,6 +152,7 @@ function App() {
                 <img src={cocktailInfo.strDrinkThumb} alt="change this later"></img>
               </li>
             </div>
+
           )
         })
       }

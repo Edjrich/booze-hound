@@ -10,7 +10,10 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 
 /* FONTS */
-    /* font-family: 'Megrim', cursive;
+    /* font-family: 'Bungee Outline', cursive;
+    font-family: 'Kumar One Outline', cursive;
+    font-family: 'Megrim', cursive;
+    font-family: 'Oswald', sans-serif;
     font-family: 'Work Sans', sans-serif; */
 
 
@@ -37,7 +40,7 @@ h3 {
 }
 
 html {
-  background-color: #cc5500;
+  background-color: black;
 }
 
 img {
@@ -50,7 +53,7 @@ img {
   text-transform: uppercase;
   align-self: center;
   margin-bottom: .2em;
-  margin-top: .7em;
+  margin-top: .3em;
 }
 
 ul {
@@ -75,8 +78,8 @@ li {
 }
 
 .overlay {
-  background-color: green;
-  border: 1px blue solid;
+  background-color: black;
+  border: 1px orange solid;
   /* position: absolute;
   top: auto; */
   position: fixed;
@@ -88,23 +91,46 @@ li {
   /* try playing around with height and max-height */
 }
 
-img:hover {
-  color: green;
-  background-color: violet;
-  border: 2px solid yellow;
-  box-shadow: 5px 5px 5px blue;
+img:hover,
+img:focus {
+  border: 1px solid rgba(255, 59, 255, 0.6);
+  box-shadow: -4px 4px 5px rgb(0, 171, 250), 4px 4px 5px rgb(0, 171, 250), 4px -4px 5px rgb(0, 171, 250), -4px -4px 5px rgb(0, 171, 250) ;
 }
 
 /* TESTING FONTS */
 
 h1,
 h2,
-h3 {
+h3,
+.footer-text {
       font-family: 'Megrim', cursive;
+      color: rgb(0, 171, 250);
+      /* text-shadow: -1px 3px 5px #ff3bff; */
+      text-shadow: -1px 3px 5px #ff3bff, -10px 10px 35px #ff3bff;
+}
+
+h1 {
+  padding: 1rem 0;
+  font-size: 4.2em;
+}
+
+
+h2, 
+h3 {
+  font-size: 2.3em;
 }
 
 p {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  color: rgba(255, 59, 255, 0.6);
+  /* text-shadow: -1px 3px 5px rgb(0, 171, 250); */
+  font-size: 1.5em;
+}
+
+.form {
+  margin: 2em 1em ;
+  display: grid;
+  gap: 1em;
 }
 
 
@@ -125,6 +151,14 @@ p {
   .drink-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  h1 {
+    font-size: 5.3rem;
+  }
+
+  .form {
+  grid-template-columns: 1fr 1fr;
   }
 }
 
