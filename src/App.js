@@ -69,7 +69,7 @@ function App() {
       
     // second api call. use drinkId on click to get recipe/information for drink
     axios({
-      url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php',
+      url: 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php',
       // lookup by ID
       method: 'GET',
       params: {
