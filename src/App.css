@@ -9,6 +9,11 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
 
+/* FONTS */
+    /* font-family: 'Megrim', cursive;
+    font-family: 'Work Sans', sans-serif; */
+
+
 
 /* GENERAL STYLING  */
 
@@ -65,11 +70,41 @@ li {
   gap: .5em;
 }
 
+.drink-list li {
+  position: relative;
+}
+
 .overlay {
   background-color: green;
   border: 1px blue solid;
   /* position: absolute;
   top: auto; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* width: 800px; */
+  max-width: 70vw;
+  /* try playing around with height and max-height */
+}
+
+img:hover {
+  color: green;
+  background-color: violet;
+  border: 2px solid yellow;
+  box-shadow: 5px 5px 5px blue;
+}
+
+/* TESTING FONTS */
+
+h1,
+h2,
+h3 {
+      font-family: 'Megrim', cursive;
+}
+
+p {
+  font-family: 'Work Sans', sans-serif;
 }
 
 
