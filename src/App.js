@@ -32,7 +32,7 @@ function App() {
 
     // initial API call. displays drinks on to the page to choose from
     axios({
-      url: 'http://www.thecocktaildb.com/api/json/v1/1/filter.php',
+      url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php',
       // filter by ingredient
       method: 'GET',
       params: {
