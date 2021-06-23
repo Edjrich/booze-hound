@@ -1,6 +1,6 @@
 import './App.css';
 import axios from 'axios';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Footer from './Footer';
 // import CocktailResults from './CocktailResults';
 
@@ -14,6 +14,15 @@ function App() {
   const [firstChoice, setFirstChoice] = useState('gin');
   // set default choice to gin
   const [cocktailDetails, setCocktailDetails] = useState([]);
+  const [open, setOpen] = useState(false);
+
+  const toggleDisplay = () => {
+    console.log(open)
+    setOpen(!open);
+    console.log('?????? IS THERE ANYONE OUT THERE????')
+  }
+  
+  
 
 
   const getData = ((event) => {
@@ -22,7 +31,7 @@ function App() {
     // console.log(`my app has mounted`)
 
     // initial API call. displays drinks on to the page to choose from
-     axios({
+    axios({
       url: 'http://www.thecocktaildb.com/api/json/v1/1/filter.php',
       // filter by ingredient
       method: 'GET',
@@ -51,6 +60,12 @@ function App() {
     event.preventDefault();
     console.log(event.target.id)
     const imgId = event.target.id
+    
+
+  // let testFunction = () => {
+  //   moreInfo();
+  //   toggleDisplay();
+  // }
       
     // second api call. use drinkId on click to get recipe/information for drink
     axios({
@@ -65,7 +80,7 @@ function App() {
       }
     }).then((results) => {
     //   console.log(results);
-    // console.log(results.data.drinks)
+    console.log(results.data.drinks)
     setCocktailDetails(results.data.drinks)
       // setDrink(results)
       // setIsLoading(false);
@@ -81,6 +96,7 @@ function App() {
   //   setFirstChoice(event.target.value)
   //   console.log(event.target.value)
   // }
+  
 
 
   return (
@@ -89,7 +105,7 @@ function App() {
         <h1>Cocktail Curator</h1>
         <p>Please choose from one of the options below:</p>
         <form className="form" onSubmit={getData}>
-          <select onChange={userChoice}>
+          <select onClick={userChoice}>
             <option value='gin'>Gin</option>
             <option value='tequila'>Tequila</option>
             <option value='vodka'>Vodka</option>
@@ -110,7 +126,10 @@ function App() {
         {
           drink.map( (drinkInfo) => {
             return (
-              <li onClick={moreInfo} key={drinkInfo.idDrink}>
+              <li onClick={(e) => {
+                moreInfo(e);
+                toggleDisplay();
+              }} key={drinkInfo.idDrink}>
                 <h2>{drinkInfo.strDrink}</h2>
                 <img id={drinkInfo.idDrink} src={drinkInfo.strDrinkThumb} alt="{drinkInfo.strDrink}"></img>
                 {/* will have to review alt tag and accessibility standards  */}
@@ -120,41 +139,37 @@ function App() {
         }
       </ul>
     </section>
-    <ul>
-      {
-        cocktailDetails.map( (cocktailInfo) => {
-          // not an array! try a for in loop! maybe? idk
-          return (
-
+      <ul>
+      { cocktailDetails.length === 1 ? (
             // need error handling for strIngredients
             // if strIngredients = null, don't display?
             // how does that work????
-            <div className="wrapper overlay">
-              <li>
-                <h3>{cocktailInfo.strDrink}</h3>
-                <p>{cocktailInfo.strInstructions}</p>
-                <p>{cocktailInfo.strMeasure1} {cocktailInfo.strIngredient1}</p>
-                <p>{cocktailInfo.strMeasure2} {cocktailInfo.strIngredient2}</p>
-                <p>{cocktailInfo.strMeasure3} {cocktailInfo.strIngredient3}</p>
-                <p>{cocktailInfo.strMeasure4} {cocktailInfo.strIngredient4}</p>
-                <p>{cocktailInfo.strMeasure5} {cocktailInfo.strIngredient5}</p>
-                <p>{cocktailInfo.strMeasure6} {cocktailInfo.strIngredient6}</p>
-                <p>{cocktailInfo.strMeasure7} {cocktailInfo.strIngredient7}</p>
-                <p>{cocktailInfo.strMeasure8} {cocktailInfo.strIngredient8}</p>
-                <p>{cocktailInfo.strMeasure9} {cocktailInfo.strIngredient9}</p>
-                <p>{cocktailInfo.strMeasure10} {cocktailInfo.strIngredient10}</p>
-                <p>{cocktailInfo.strMeasure11} {cocktailInfo.strIngredient11}</p>
-                <p>{cocktailInfo.strMeasure12} {cocktailInfo.strIngredient12}</p>
-                <p>{cocktailInfo.strMeasure13} {cocktailInfo.strIngredient13}</p>
-                <p>{cocktailInfo.strMeasure14} {cocktailInfo.strIngredient14}</p>
-                <p>{cocktailInfo.strMeasure15} {cocktailInfo.strIngredient15}</p>
-                <p>Serve in: {cocktailInfo.strGlass}</p>
-                <img src={cocktailInfo.strDrinkThumb} alt="change this later"></img>
-              </li>
-            </div>
-
-          )
-        })
+            // <div className="wrapper">
+              <div className={ open ? "overlay active" : "overlay inactive"}>
+                <li key={cocktailDetails[0].idDrink + "unqiuelol"} >
+                  <h3>{cocktailDetails[0].strDrink}</h3>
+                  <p>{cocktailDetails[0].strInstructions}</p>
+                  <p>{cocktailDetails[0].strMeasure1} {cocktailDetails[0].strIngredient1}</p>
+                  <p>{cocktailDetails[0].strMeasure2} {cocktailDetails[0].strIngredient2}</p>
+                  <p>{cocktailDetails[0].strMeasure3} {cocktailDetails[0].strIngredient3}</p>
+                  <p>{cocktailDetails[0].strMeasure4} {cocktailDetails[0].strIngredient4}</p>
+                  <p>{cocktailDetails[0].strMeasure5} {cocktailDetails[0].strIngredient5}</p>
+                  <p>{cocktailDetails[0].strMeasure6} {cocktailDetails[0].strIngredient6}</p>
+                  <p>{cocktailDetails[0].strMeasure7} {cocktailDetails[0].strIngredient7}</p>
+                  <p>{cocktailDetails[0].strMeasure8} {cocktailDetails[0].strIngredient8}</p>
+                  <p>{cocktailDetails[0].strMeasure9} {cocktailDetails[0].strIngredient9}</p>
+                  <p>{cocktailDetails[0].strMeasure10} {cocktailDetails[0].strIngredient10}</p>
+                  <p>{cocktailDetails[0].strMeasure11} {cocktailDetails[0].strIngredient11}</p>
+                  <p>{cocktailDetails[0].strMeasure12} {cocktailDetails[0].strIngredient12}</p>
+                  <p>{cocktailDetails[0].strMeasure13} {cocktailDetails[0].strIngredient13}</p>
+                  <p>{cocktailDetails[0].strMeasure14} {cocktailDetails[0].strIngredient14}</p>
+                  <p>{cocktailDetails[0].strMeasure15} {cocktailDetails[0].strIngredient15}</p>
+                  <p>Serve in: {cocktailDetails[0].strGlass}</p>
+                  <button onClick={toggleDisplay}>Take me back</button>
+                  <img src={cocktailDetails[0].strDrinkThumb} alt="change this later"></img>
+                </li>
+              </div> ) : <p>no!</p>
+            // </div>
       }
     </ul>
     <Footer />
