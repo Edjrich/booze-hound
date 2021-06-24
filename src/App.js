@@ -84,7 +84,7 @@ function App() {
     <div className="App">
       <header className="wrapper">
         <h1>Cocktail Curator</h1>
-        <p>Please choose from one of the options below. Select of </p>
+        <p>Please choose from one of the options below: </p>
         <form className="form" onSubmit={getData}>
           <select onClick={userChoice}>
             <option value='gin'>Gin</option>
