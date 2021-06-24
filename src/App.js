@@ -87,17 +87,6 @@ function App() {
     })
   }
 
-  // const dataOnClick = () => {
-  //   console.log()
-  //   setCocktailDetails()
-  // }
-
-  //  const userChoice = (event) => {
-  //   setFirstChoice(event.target.value)
-  //   console.log(event.target.value)
-  // }
-  
-
 
   return (
     <div className="App">
@@ -145,7 +134,7 @@ function App() {
             // if strIngredients = null, don't display?
             // how does that work????
             // <div className="wrapper">
-              <div className={ open ? "overlay active" : "overlay inactive"}>
+              <div className={ open ? "overlay wrapper active" : "overlay wrapper inactive"}>
                 <li key={cocktailDetails[0].idDrink + "unqiuelol"} >
                   <h3>{cocktailDetails[0].strDrink}</h3>
                   <p>{cocktailDetails[0].strInstructions}</p>
@@ -158,17 +147,11 @@ function App() {
                   <p>{cocktailDetails[0].strMeasure7} {cocktailDetails[0].strIngredient7}</p>
                   <p>{cocktailDetails[0].strMeasure8} {cocktailDetails[0].strIngredient8}</p>
                   <p>{cocktailDetails[0].strMeasure9} {cocktailDetails[0].strIngredient9}</p>
-                  <p>{cocktailDetails[0].strMeasure10} {cocktailDetails[0].strIngredient10}</p>
-                  <p>{cocktailDetails[0].strMeasure11} {cocktailDetails[0].strIngredient11}</p>
-                  <p>{cocktailDetails[0].strMeasure12} {cocktailDetails[0].strIngredient12}</p>
-                  <p>{cocktailDetails[0].strMeasure13} {cocktailDetails[0].strIngredient13}</p>
-                  <p>{cocktailDetails[0].strMeasure14} {cocktailDetails[0].strIngredient14}</p>
-                  <p>{cocktailDetails[0].strMeasure15} {cocktailDetails[0].strIngredient15}</p>
                   <p>Serve in: {cocktailDetails[0].strGlass}</p>
                   <button onClick={toggleDisplay}>Take me back</button>
                   <img src={cocktailDetails[0].strDrinkThumb} alt="change this later"></img>
                 </li>
-              </div> ) : <p>no!</p>
+              </div> ) : <p>Enjoy!</p>
             // </div>
       }
     </ul>
