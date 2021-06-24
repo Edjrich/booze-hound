@@ -17,9 +17,8 @@ function App() {
   const [open, setOpen] = useState(false);
 
   const toggleDisplay = () => {
-    console.log(open)
+    // console.log(open)
     setOpen(!open);
-    console.log('?????? IS THERE ANYONE OUT THERE????')
   }
   
   
@@ -42,15 +41,15 @@ function App() {
         
       }
     }).then( (results) =>{
-      console.log(results);
-      console.log(results.data.drinks)
+      // console.log(results);
+      // console.log(results.data.drinks)
       setDrink(results.data.drinks)
     })
   })
 
   const userChoice = (event) => {
     setFirstChoice(event.target.value)
-    console.log(event.target.value)
+    // console.log(event.target.value)
   }
 
   // console.log(userChoice);
@@ -58,7 +57,7 @@ function App() {
 
   const moreInfo = (event) => {
     event.preventDefault();
-    console.log(event.target.id)
+    // console.log(event.target.id)
     const imgId = event.target.id
     
       
@@ -75,7 +74,7 @@ function App() {
       }
     }).then((results) => {
     //   console.log(results);
-    console.log(results.data.drinks)
+    // console.log(results.data.drinks)
     setCocktailDetails(results.data.drinks)
     })
   }
