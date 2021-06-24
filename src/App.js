@@ -24,7 +24,7 @@ function App() {
   
   
 
-
+// getData from submission of form
   const getData = ((event) => {
     event.preventDefault();
 
@@ -61,11 +61,6 @@ function App() {
     console.log(event.target.id)
     const imgId = event.target.id
     
-
-  // let testFunction = () => {
-  //   moreInfo();
-  //   toggleDisplay();
-  // }
       
     // second api call. use drinkId on click to get recipe/information for drink
     axios({
@@ -82,8 +77,6 @@ function App() {
     //   console.log(results);
     console.log(results.data.drinks)
     setCocktailDetails(results.data.drinks)
-      // setDrink(results)
-      // setIsLoading(false);
     })
   }
 
@@ -92,7 +85,7 @@ function App() {
     <div className="App">
       <header className="wrapper">
         <h1>Cocktail Curator</h1>
-        <p>Please choose from one of the options below:</p>
+        <p>Please choose from one of the options below. Select of </p>
         <form className="form" onSubmit={getData}>
           <select onClick={userChoice}>
             <option value='gin'>Gin</option>
@@ -133,7 +126,7 @@ function App() {
             // need error handling for strIngredients
             // if strIngredients = null, don't display?
             // how does that work????
-            // <div className="wrapper">
+            <div className="check">
               <div className={ open ? "overlay wrapper active" : "overlay wrapper inactive"}>
                 <li key={cocktailDetails[0].idDrink + "unqiuelol"} >
                   <h3>{cocktailDetails[0].strDrink}</h3>
@@ -151,8 +144,8 @@ function App() {
                   <button onClick={toggleDisplay}>Take me back</button>
                   <img src={cocktailDetails[0].strDrinkThumb} alt="change this later"></img>
                 </li>
-              </div> ) : <p>Enjoy!</p>
-            // </div>
+              </div>
+            </div> ) : <p>Enjoy!</p>
       }
     </ul>
     <Footer />

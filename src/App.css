@@ -69,7 +69,7 @@ li {
 
 .overlay {
   background-color: black;
-  border: 1px orange solid;
+  border: 1px rgba(251, 162, 0, 0.5) solid;
   /* position: absolute;
   top: auto; */
   position: fixed;
@@ -79,6 +79,7 @@ li {
   /* width: 800px; */
   max-width: 70vw;
   padding: .5em;
+  box-shadow: 1px 50px orange
   /* try playing around with height and max-height */
 }
 
@@ -118,6 +119,7 @@ p {
   /* text-shadow: -1px 3px 5px rgb(0, 171, 250); */
   font-size: 1.5em;
   text-shadow: orange 1px 1px 10px;
+  padding: 0.05em;
 }
 
 .form {
